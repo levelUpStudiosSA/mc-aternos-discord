@@ -2,7 +2,6 @@ import discord
 import os
 import asyncio
 from python_aternos import Client
-from python_aternos.atconnect import AternosConnection
 
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
@@ -10,12 +9,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-ATERNOS_COOKIE = "WW5uvr7D7dmD8Me40YQEUfEgOv94b7hKKIpyrk9SeDYnnYb6wRFQJ6FmjwpaRmtpMmVnhA25eqmJ82JxkLwAJ9PFf0PRbV9g7nnn"
-
-atconn = AternosConnection()
-atconn.session.cookies.set("ATERNOS_SESSION", ATERNOS_COOKIE, domain="aternos.org")
-aternos = Client(atconn)
-
+aternos = Client.from_credentials("discord1bot", "Dc5NjQ3Njg2MjM3MDA4Mw.G4q7qc.uEOV4v09JCtZYEWBd61CpR2uEbDUboHUeKCBIY")
 atservers = aternos.list_servers()
 myserv = atservers[0]
 
