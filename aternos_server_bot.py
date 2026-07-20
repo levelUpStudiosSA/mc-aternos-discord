@@ -11,7 +11,8 @@ client = discord.Client(intents=intents)
 
 ATERNOS_COOKIE = "WW5uvr7D7dmD8Me40YQEUfEgOv94b7hKKIpyrk9SeDYnnYb6wRFQJ6FmjwpaRmtpMmVnhA25eqmJ82JxkLwAJ9PFf0PRbV9g7nnn"
 
-aternos = Client(ATERNOS_COOKIE)
+aternos = Client()
+aternos.atconn.session.cookies.set("ATERNOS_SESSION", ATERNOS_COOKIE)
 atservers = aternos.list_servers()
 myserv = atservers[0]
 
