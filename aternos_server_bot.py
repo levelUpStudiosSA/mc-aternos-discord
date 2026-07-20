@@ -1,7 +1,8 @@
 import discord
 import os
-from python_aternos import Client
 import asyncio
+from python_aternos import Client
+from python_aternos.atconnect import AternosConnection
 
 TOKEN = os.environ.get("DISCORD_TOKEN")
 
@@ -11,8 +12,10 @@ client = discord.Client(intents=intents)
 
 ATERNOS_COOKIE = "WW5uvr7D7dmD8Me40YQEUfEgOv94b7hKKIpyrk9SeDYnnYb6wRFQJ6FmjwpaRmtpMmVnhA25eqmJ82JxkLwAJ9PFf0PRbV9g7nnn"
 
-aternos = Client()
-aternos.atconn.session.cookies.set("ATERNOS_SESSION", ATERNOS_COOKIE)
+atconn = AternosConnection()
+atconn.session.cookies.set("ATERNOS_SESSION", ATERNOS_COOKIE, domain="aternos.org")
+aternos = Client(atconn)
+
 atservers = aternos.list_servers()
 myserv = atservers[0]
 
